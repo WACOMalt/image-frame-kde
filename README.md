@@ -8,6 +8,8 @@ Frame always draws the Plasma widget background behind its image, so a
 transparent PNG shows on a grey panel. Image Frame can leave out the
 background, so transparent areas of the image show the desktop.
 
+![A transparent pumpkin PNG in Image Frame on the desktop](screenshots/screenshot-desktop.png)
+
 ## Changes from Media Frame
 
 | Setting | Media Frame | Image Frame |
@@ -16,8 +18,12 @@ background, so transparent areas of the image show the desktop.
 | "Open in viewer" button on hover | Always on | Off by default |
 | Previous and next buttons on hover | Always on | On by default |
 
-Image Frame also obeys "Pause slideshow when cursor is over image". Media
-Frame paused even when that setting was off.
+Image Frame also has these changes in behavior:
+
+- With one picture there is no slideshow. Media Frame faded the same picture
+  out and in again at every interval.
+- "Pause slideshow when cursor is over image" is obeyed. Media Frame paused
+  even when that setting was off.
 
 ## Requirements
 
@@ -53,13 +59,29 @@ Right-click the widget and select "Configure Image Frame".
 - **Behavior**: the time between pictures, the fill mode, the random order,
   pause on hover, and click to open.
 
-## KDE Store package
+## Layout
+
+- `plasmoid/bsums.xyz.image-frame/metadata.json`: applet Id, name, version
+- `plasmoid/bsums.xyz.image-frame/contents/ui/main.qml`: the widget, forked
+  from Media Frame
+- `plasmoid/bsums.xyz.image-frame/contents/ui/MediaFrame.qml`: the QML port of
+  the Media Frame C++ class, which reads the folders
+- `plasmoid/bsums.xyz.image-frame/contents/ui/config*.qml`: the settings pages
+- `install.sh`: installs the widget for the current user
+- `make-plasmoid.sh`: builds `dist/image-frame-<version>.plasmoid` for the KDE
+  Store
+- `PUBLISHING.md`: KDE Store listing text and release steps
+- `logo/`, `screenshots/`: KDE Store images
+
+## Publishing
+
+See [PUBLISHING.md](PUBLISHING.md). Build the store package with:
 
 ```sh
 ./make-plasmoid.sh
 ```
 
-The package is written to `dist/image-frame-<version>.plasmoid`.
+Tested on Plasma 6.7.5, Wayland, Nobara/Fedora 44.
 
 ## License
 
