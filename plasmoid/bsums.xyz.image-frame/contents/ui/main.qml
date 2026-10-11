@@ -15,6 +15,8 @@
 //   always paused.
 // - A picture that changes on disk is loaded again, also when it is the
 //   only picture.
+// - With only one picture there is no slideshow: the timer stops and the
+//   picture does not fade out and in again.
 
 import QtQuick
 import QtQuick.Layouts
@@ -59,13 +61,6 @@ PlasmoidItem {
 
     onActiveSourceChanged: {
         items.watch(activeSource)
-    }
-
-    onHasItemsChanged: {
-        if(hasItems) {
-            if(activeSource == "")
-                nextItem()
-        }
     }
 
     onExternalData: (mimetype, data) => {
@@ -130,6 +125,10 @@ PlasmoidItem {
             setActiveSource(items.popFuture())
         } else {
             items.get(function(filePath){
+                // With one picture, get() gives the picture that is already
+                // shown. Do not fade it out and in again.
+                if (filePath === activeSource && !isTransitioning)
+                    return
                 setActiveSource(filePath)
             },function(errorMessage){
             })
@@ -164,13 +163,24 @@ PlasmoidItem {
             setActiveSource(path)
         }
 
+        // Show a picture when the first ones are found, and replace a
+        // picture that was removed in the settings. The slideshow timer
+        // does not run for one picture, so it cannot do this.
+        function onCountChanged() {
+            if (items.count === 0)
+                return
+            var shown = isTransitioning ? transitionSource : activeSource
+            if (items.allFiles.indexOf(shown) < 0)
+                nextItem()
+        }
+
     }
 
     Timer {
         id: nextTimer
         interval: (plasmoid.configuration.interval*1000)
         repeat: true
-        running: hasItems && !pause
+        running: items.count > 1 && !pause
         onTriggered: nextItem()
     }
 
