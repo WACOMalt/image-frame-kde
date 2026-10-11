@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
+      http://www.kde.org/standards/kcfg/1.0/kcfg.xsd">
+    <kcfgfile name=""/>
+    <group name="General">
+        <entry name="interval" type="Double">
+            <label>Time between pictures, in seconds</label>
+            <default>10.0</default>
+        </entry>
+        <entry name="randomize" type="Bool">
+            <label>Show the pictures in a random order</label>
+            <default>true</default>
+        </entry>
+        <entry name="pauseOnMouseOver" type="Bool">
+            <label>Pause the slideshow while the cursor is over the widget</label>
+            <default>true</default>
+        </entry>
+        <entry name="leftClickOpenImage" type="Bool">
+            <label>Open the picture in the default viewer on a left click</label>
+            <default>true</default>
+        </entry>
+        <entry name="fillMode" type="Int">
+            <label>How the picture fills the widget (Image.FillMode)</label>
+            <default>1</default>
+        </entry>
+        <!-- The two entries that Media Frame does not have. The defaults
+             suit transparent images: no frame behind them and no button
+             over them. -->
+        <entry name="backgroundHint" type="Int">
+            <label>Background behind the picture (PlasmaCore.Types.BackgroundHints)</label>
+            <default>0</default>
+        </entry>
+        <entry name="showOpenButton" type="Bool">
+            <label>Show the button that opens the picture in the default viewer on hover</label>
+            <default>false</default>
+        </entry>
+        <entry name="showNavigationButtons" type="Bool">
+            <label>Show the previous and next buttons on hover</label>
+            <default>true</default>
+        </entry>
+    </group>
+    <group name="Paths">
+        <entry name="pathList" type="StringList">
+            <default></default>
+        </entry>
+    </group>
+</kcfg>

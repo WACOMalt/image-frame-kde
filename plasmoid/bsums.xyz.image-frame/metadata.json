@@ -1,0 +1,35 @@
+{
+  "KPackageStructure": "Plasma/Applet",
+  "KPlugin": {
+    "Authors": [
+      {
+        "Email": "ben@bsums.xyz",
+        "Name": "BSumsXYZ"
+      },
+      {
+        "Email": "dev.larpon@gmail.com",
+        "Name": "Lars Pontoppidan"
+      }
+    ],
+    "Category": "Utilities",
+    "Description": "Shows an image or a slideshow of images from files and folders. A fork of the Media Frame widget that can show transparent images with no background behind them.",
+    "Icon": "image-x-generic",
+    "Id": "bsums.xyz.image-frame",
+    "License": "GPL-2.0-or-later",
+    "Name": "Image Frame",
+    "Version": "1.0.0"
+  },
+  "X-Plasma-API-Minimum-Version": "6.0",
+  "X-Plasma-DropMimeTypes": [
+    "inode/directory",
+    "image/png",
+    "image/jpeg",
+    "image/gif",
+    "image/webp",
+    "image/avif",
+    "image/jxl",
+    "image/svg+xml",
+    "image/svg+xml-compressed",
+    "image/bmp"
+  ]
+}
