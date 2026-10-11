@@ -11,13 +11,15 @@
         "Name": "Lars Pontoppidan"
       }
     ],
+    "BugReportUrl": "https://github.com/WACOMalt/image-frame-kde/issues",
     "Category": "Utilities",
     "Description": "Shows an image or a slideshow of images from files and folders. A fork of the Media Frame widget that can show transparent images with no background behind them.",
     "Icon": "image-x-generic",
     "Id": "bsums.xyz.image-frame",
     "License": "GPL-2.0-or-later",
     "Name": "Image Frame",
-    "Version": "1.0.0"
+    "Version": "1.0.0",
+    "Website": "https://github.com/WACOMalt/image-frame-kde"
   },
   "X-Plasma-API-Minimum-Version": "6.0",
   "X-Plasma-DropMimeTypes": [
